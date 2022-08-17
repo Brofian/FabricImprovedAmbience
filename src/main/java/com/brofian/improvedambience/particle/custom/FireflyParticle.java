@@ -8,18 +8,46 @@ import net.minecraft.particle.DefaultParticleType;
 
 public class FireflyParticle extends SpriteBillboardParticle {
 
+    private double[] motionState            = new double[] { 0.0F, 0.0F, 0.0F};
+    private double[] motionStateMultiplier  = new double[] { 0.0F, 0.0F, 0.0F};
+    private double[] motionStateIncrease    = new double[] { 0.0F, 0.0F, 0.0F};
+
+    private final static float flickeringConstant = 16F; // should be a multiple of 2. Higher values give shorter flickering
+
     protected FireflyParticle(ClientWorld clientWorld, double x, double y, double z, SpriteProvider spriteSet, double xd, double yd, double zd) {
         super(clientWorld, x, y, z, xd, yd, zd);
 
         this.velocityMultiplier = 0.6F;
-        this.scale = 0.75F;
-        this.maxAge = 20;
+        this.scale *= 0.75F;
+        this.x = xd;
+        this.y = yd;
+        this.z = zd;
+        this.maxAge = 200;
+
+        this.motionState[0] = Math.random() * Math.PI;
+        this.motionState[1] = Math.random() * Math.PI;
+        this.motionState[2] = Math.random() * Math.PI;
+
+        this.motionStateMultiplier[0] = Math.random() * 0.0025;
+        this.motionStateMultiplier[1] = Math.random() * 0.025;
+        this.motionStateMultiplier[2] = Math.random() * 0.025;
+
+        this.motionStateIncrease[0] = Math.random() * 0.05;
+        this.motionStateIncrease[1] = Math.random() * 0.05;
+        this.motionStateIncrease[2] = Math.random() * 0.05;
+
 
         this.red = 1.0F;
         this.blue = 1.0F;
         this.green = 1.0F;
 
         this.setSpriteForAge(spriteSet);
+    }
+
+    @Override
+    public int getBrightness(float tint) {
+        double flicker = 1 - Math.pow(Math.sin(this.motionState[0]*2),FireflyParticle.flickeringConstant);
+        return (int)(255 * flicker);
     }
 
     @Override
@@ -30,11 +58,28 @@ public class FireflyParticle extends SpriteBillboardParticle {
     @Override
     public void tick() {
         super.tick();
+
+        this.velocityY = Math.sin(this.motionState[0]) * Math.abs(this.motionStateMultiplier[0]);
+        this.velocityX = Math.sin(this.motionState[1]) * Math.abs(this.motionStateMultiplier[1]);
+        this.velocityZ = Math.sin(this.motionState[2]) * Math.abs(this.motionStateMultiplier[2]);
+
+        this.motionState[0] += this.motionStateIncrease[0];
+        this.motionState[1] += this.motionStateIncrease[1];
+        this.motionState[2] += this.motionStateIncrease[2];
+
+
+        // only fade out at the end of the lifespan
         fadeOut();
     }
 
     private void fadeOut() {
-        this.alpha = (-(1/(float)maxAge) * age + 1);
+        float threshold = this.maxAge * (float) 0.8;
+
+        if(this.age > threshold) {
+            float usedAge = this.age - threshold;
+            float maxUsedAge = this.maxAge * 0.2F;
+            this.alpha = (-(1/maxUsedAge) * (usedAge) + 1);
+        }
     }
 
     @Environment(EnvType.CLIENT)
