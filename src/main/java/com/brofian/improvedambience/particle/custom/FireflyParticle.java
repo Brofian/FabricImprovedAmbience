@@ -34,11 +34,11 @@ public class FireflyParticle extends SpriteBillboardParticle {
         this.motionState[1] = Math.random() * Math.PI;
         this.motionState[2] = Math.random() * Math.PI;
 
-        this.motionStateMultiplier[0] = Math.random() * 0.0025;
-        this.motionStateMultiplier[1] = Math.random() * 0.025;
-        this.motionStateMultiplier[2] = Math.random() * 0.025;
+        this.motionStateMultiplier[0] = Math.random() * 0.025;
+        this.motionStateMultiplier[1] = Math.random() * 0.1;
+        this.motionStateMultiplier[2] = Math.random() * 0.1;
 
-        this.motionStateIncrease[0] = Math.random() * 0.05;
+        this.motionStateIncrease[0] = Math.random() * 0.2;
         this.motionStateIncrease[1] = Math.random() * 0.05;
         this.motionStateIncrease[2] = Math.random() * 0.05;
 
