@@ -1,5 +1,6 @@
 package com.brofian.improvedambience;
 
+import com.brofian.improvedambience.config.ModConfigs;
 import com.brofian.improvedambience.particle.ModParticles;
 import com.brofian.improvedambience.particle.custom.FireflyParticle;
 import net.fabricmc.api.ModInitializer;
@@ -14,6 +15,8 @@ public class ImprovedAmbience implements ModInitializer {
     @Override
     public void onInitialize() {
         System.out.println("Starting improved ambience mod");
+
+        ModConfigs.registerConfigs(); // should always be first action
 
         ModParticles.registerParticles();
         ParticleFactoryRegistry.getInstance().register(ModParticles.FIREFLY_PARTICLE, FireflyParticle.Factory::new);
