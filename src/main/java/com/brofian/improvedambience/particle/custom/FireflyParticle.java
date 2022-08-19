@@ -24,17 +24,17 @@ public class FireflyParticle extends SpriteBillboardParticle {
         this.spawningLightLevel = clientWorld.getLightLevel(LightType.BLOCK, new BlockPos(x,y,z));
 
         this.velocityMultiplier = 0.6F;
-        this.scale *= 0.75F;
+        this.scale *= 0.3F + (Math.random() * 0.5F);
         this.x = xd;
         this.y = yd;
         this.z = zd;
-        this.maxAge = 200;
+        this.maxAge = 100 + (int)(Math.random() * 100);
 
         this.motionState[0] = Math.random() * Math.PI;
         this.motionState[1] = Math.random() * Math.PI;
         this.motionState[2] = Math.random() * Math.PI;
 
-        this.motionStateMultiplier[0] = Math.random() * 0.025;
+        this.motionStateMultiplier[0] = 0.02 + Math.random() * 0.13;
         this.motionStateMultiplier[1] = Math.random() * 0.1;
         this.motionStateMultiplier[2] = Math.random() * 0.1;
 

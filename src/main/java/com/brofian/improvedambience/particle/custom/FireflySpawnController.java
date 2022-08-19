@@ -22,9 +22,9 @@ public class FireflySpawnController {
 
     public static BlockPos[] fireflyPacks = new BlockPos[32];
 
-    public static final float wildFireflySpawnChance = 0.002F;
-    public static final float fireflyPackSpawnChance = 0.01F;
-    public static final float packFireflySpawnChance = 0.3F;
+    public static final float wildFireflySpawnChance = 0.003F;
+    public static final float fireflyPackSpawnChance = 0.002F;
+    public static final float packFireflySpawnChance = 0.5F;
     public static final float fireflyPackDimension   = 2.3F;
     public static final int minPackDistance   = 10;
     public static final int maxPackDistanceBase  = 100;
