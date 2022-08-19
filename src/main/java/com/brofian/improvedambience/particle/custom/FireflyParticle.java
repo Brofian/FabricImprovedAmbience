@@ -8,6 +8,12 @@ import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.LightType;
 
+/*
+ * Created by: Fabian Holzwarth / 2022
+ * https://github.com/Brofian
+ * info@fabianholzwarth.de
+ */
+
 public class FireflyParticle extends SpriteBillboardParticle {
 
     private double[] motionState            = new double[] { 0.0F, 0.0F, 0.0F};

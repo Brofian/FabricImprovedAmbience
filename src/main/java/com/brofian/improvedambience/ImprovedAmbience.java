@@ -7,6 +7,12 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 
 import java.io.Console;
 
+/*
+ * Created by: Fabian Holzwarth / 2022
+ * https://github.com/Brofian
+ * info@fabianholzwarth.de
+ */
+
 public class ImprovedAmbience implements ModInitializer {
 
     public static final String MOD_ID = "impamb";

@@ -17,6 +17,12 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
+/*
+ * Created by: Fabian Holzwarth / 2022
+ * https://github.com/Brofian
+ * info@fabianholzwarth.de
+ */
+
 public class FireflySpawnController {
 
 

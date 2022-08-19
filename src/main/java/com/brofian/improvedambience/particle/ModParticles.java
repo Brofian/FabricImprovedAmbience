@@ -7,6 +7,11 @@ import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
+/*
+ * Created by: Fabian Holzwarth / 2022
+ * https://github.com/Brofian
+ * info@fabianholzwarth.de
+ */
 
 public class ModParticles {
 
